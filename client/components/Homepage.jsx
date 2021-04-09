@@ -37,6 +37,8 @@ class Homepage extends React.Component {
 
         <div>
           <button style={{ display: "inline", width: "300px" }} onClick={this.onModalOpen}>NEW EVENT FORM</button>
+        </div>
+        <div>MAP GOING HERE MAYBE
 
         </div>
         <div className="homepage-body">

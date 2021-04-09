@@ -43,10 +43,10 @@ class RaceJumbotron extends React.Component {
                   src={race.image_url}
                   alt="First slide"
                 />
+                        {this.state.isModalOpen ? (<EventInfoModal event={race} onModalOpen={this.onModalOpen} />) : null}
               <Carousel.Caption key={race.id}>
                 {/* <div className="carousel-caption"> */}
                   <div className="carousel-text ">
-                        {this.state.isModalOpen ? (<EventInfoModal event={race} onModalOpen={this.onModalOpen} />) : null}
                     <div className="race-description">
                       <div>
                         <h1 onClick={this.onModalOpen} className="clickable-header">{race.name}</h1>
