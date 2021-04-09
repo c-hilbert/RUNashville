@@ -15,10 +15,13 @@ const SocialPost = (props) => {
       <div className='social-feed-post-header'>
         <div className='social-feed-post-profile'>
           <img className='profile-pic-round' alt='Profile' src={props.propic} />
-          <span style={{'margin-left': '5px', 'align-self': 'flex-start'}}>{props.name}</span>
+          <div style={{'marginLeft': '5px', 'alignSelf': 'flex-start'}}>
+            <span>{props.name} </span>
+            <span>{props.lastName}</span>
+          </div>
         </div>
-        <div style={{float: 'right', 'align-self': 'center'}}>
-          <div className='feed-event-info' style={{'margin-bottom': '0.5rem'}}>
+        <div style={{float: 'right', 'alignSelf': 'center'}}>
+          <div className='feed-event-info' style={{'marginBottom': '0.5rem'}}>
             <i className="fas fa-clock feed-icon"></i>
             <span className='low-priority-text'>{props.date}</span>
           </div>
@@ -41,7 +44,7 @@ const SocialPost = (props) => {
         {/* {props.emotes.map((emote)=>{
           <img className='emote' src={emote}/>
         })} */}
-        <span style={{'float': 'right', 'text-decoration': 'underline', 'cursor': 'pointer'}} className='low-priority-text'>Report</span>
+        <span style={{'float': 'right', 'textDecoration': 'underline', 'cursor': 'pointer'}} className='low-priority-text'>Report</span>
       </div>
     </div>
   );

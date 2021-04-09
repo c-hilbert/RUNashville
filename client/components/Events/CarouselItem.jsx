@@ -11,12 +11,14 @@ const CarouselItem = ({ race }) => (
       alt="First slide"
     />
     <Carousel.Caption>
-      <EventInfoModal/>
+      <EventInfoModal />
       <div className="carousel-caption">
         <div>
           <h3>{race.name}</h3>
           <div>
-            <span>Register at: {race.link}</span>
+            <span>
+              Register at: {race.link}
+            </span>
           </div>
           <div>{race.description}</div>
         </div>

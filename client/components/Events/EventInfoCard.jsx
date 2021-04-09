@@ -31,9 +31,8 @@ class EventInfoCard extends React.Component {
     var { event } = this.props;
 
     if (event.event_type === 'daily_run') {
-
-      var difficultyLevel;
-      var difficultyStyle;
+      let difficultyLevel;
+      let difficultyStyle;
       if (event.difficulty_level === 'beginner') {
         difficultyLevel = 'Beginner';
         difficultyStyle = 'difficulty-beginner-small';

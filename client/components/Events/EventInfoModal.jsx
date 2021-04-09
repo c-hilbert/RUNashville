@@ -47,8 +47,10 @@ const EventInfoModal = ({event, onModalOpen}) => {
             </div>
             <div className="divider"></div>
           </div> */}
+          <div dangerouslySetInnerHTML={{__html: event.map_url}}>
+          </div>
 
-            <img className="thumbnail" src={event.map_url}></img>&nbsp;
+            {/* <img className="thumbnail" src={event.map_url}></img>&nbsp; */}
           </div>
           {/* right column */}
           <div style={{flexBasis: "50%", marginLeft: "10px", fontSize: "1.6rem", lineHeight: "3rem"}}>
@@ -88,10 +90,10 @@ const EventInfoModal = ({event, onModalOpen}) => {
 
             <div><i style={{ 'color': 'var(--black)' }} className="fas fa-user-circle"></i>&nbsp;
               Host:&nbsp;
-              <span>{event.leader}</span>
+              <span>{event.name_user}</span>
             </div>
             <div>Description:&nbsp;
-              <span> {event.description}</span>
+              <span> {event.description_events}</span>
             </div>
             {/* <div className="mytextdiv">
               <div className="mytexttitle">

@@ -10,7 +10,16 @@ module.exports = {
       callback(result);
     });
   },
-  getUserReporetedPost(id, callback) {
+  getAllReportedPosts(callback) {
+    const queryString = 'SELECT u.id, u.name_user, u.last_name, p.id, p.image_url, p.message_post, p.show_post, p.location_post, p.created_at FROM post AS p LEFT JOIN user AS u ON p.fk_user_id = u.id WHERE p.reported = 1';
+    db.connection.query(queryString, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      callback(result);
+    });
+  },
+  getUserReportedPost(id, callback) {
     const queryString = 'SELECT u.id, p.id, u.name_user, u.last_name, p.image_url, p.message_post, p.show_post, p.location_post, p.created_at FROM post AS p LEFT JOIN user AS u ON p.fk_user_id = u.id WHERE p.fk_user_id = ? AND p.reported = true';
     db.connection.query(queryString, [id], (err, result) => {
       if (err) {
