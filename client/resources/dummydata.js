@@ -4,7 +4,7 @@ const data = {
       id: 1,
       name: 'Hilltop Half-Marathon',
       description: 'Test your endurance in the hills of Nashville.',
-      event_type: 'race',
+      name_event_type: 'race',
       start_time: '2021-04-25T08:30:00',
       end_time: '',
       start_location: 'The Hill Top at West 25th St',
@@ -25,7 +25,7 @@ const data = {
       id: 2,
       name: 'Second Chance Half-Marathon',
       description: 'We know many of you have diligently trained for this very day, so we are excited to present another opportunity for you to chase your 13.1 mile goal in Nashville on 4/24! This is a live, in-person race! Your participation will  provide hope for children aging out of orphanages in Haiti & Uganda.',
-      event_type: 'race',
+      name_event_type: 'race',
       start_time: '2021-04-25T08:30:00',
       end_time: '',
       start_location: 'The Hill Top at West 25th St',
@@ -50,7 +50,7 @@ const data = {
       All ages and fitness levels will love running past Nashville’s landmarks, like the new Music City Convention Center! \n
 
       Every participant will receive a commemorative medal & athletic tank top!`,
-      event_type: 'race',
+      name_event_type: 'race',
       start_time: '2021-04-25T08:30:00',
       end_time: '',
       start_location: 'The Hill Top at West 25th St',
@@ -70,7 +70,7 @@ const data = {
     },
     {
       id: 4,
-      event_type: 'daily_run',
+      name_event_type: 'daily_run',
       name: 'Centennial Park, West End Ave Entrance',
       description: 'Join us for a lesiurely early morning 5k along the lake in beautiful Centennial Park',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -91,7 +91,7 @@ const data = {
     },
     {
       id: 5,
-      event_type: 'daily_run',
+      name_event_type: 'daily_run',
       name: 'Shelby Park',
       description: 'This is going to be a great run at Shelby Park',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -112,7 +112,7 @@ const data = {
     },
     {
       id: 6,
-      event_type: 'daily_run',
+      name_event_type: 'daily_run',
       name: 'Different Park!',
       description: 'A stressful early morning marathon along the lake in beautiful Centennial Park',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -133,7 +133,7 @@ const data = {
     },
     {
       id: 8,
-      event_type: 'other',
+      name_event_type: 'other',
       name: 'Join Our Weekly Newsletter',
       description: 'Want to be in the know about what\'s going on in the Nashville running scene? Check out the official RUNashville newsletter!',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -153,7 +153,7 @@ const data = {
     },
     {
       id: 9,
-      event_type: 'other',
+      name_event_type: 'other',
       name: 'Volunteer With Out Habitat for Humanity Crew',
       description: 'Learn how you can help make our community a better place!',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -173,7 +173,7 @@ const data = {
     },
     {
       id: 10,
-      event_type: 'daily_run',
+      name_event_type: 'daily_run',
       name: 'Nighttime Jaunt',
       description: 'Chase the dawn',
       start_time: '2021-04-05T10:30:00.000Z',
@@ -194,7 +194,7 @@ const data = {
     },
     {
       id: 11,
-      event_type: 'daily_run',
+      name_event_type: 'daily_run',
       name: 'Midnight Scamper',
       description: 'Run for your life',
       start_time: '2021-04-05T10:30:00.000Z',

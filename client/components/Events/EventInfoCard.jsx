@@ -30,13 +30,13 @@ class EventInfoCard extends React.Component {
   render() {
     var { event } = this.props;
 
-    if (event.event_type === 'daily_run') {
+    if (event.name_event_type === 'daily_run') {
       let difficultyLevel;
       let difficultyStyle;
-      if (event.difficulty_level === 'beginner') {
+      if (event.name_difficulty_level === 'beginner') {
         difficultyLevel = 'Beginner';
         difficultyStyle = 'difficulty-beginner-small';
-      } else if (event.difficulty_level === 'intermediate') {
+      } else if (event.name_difficulty_level === 'intermediate') {
         difficultyLevel = 'Intermediate';
         difficultyStyle = 'difficulty-intermediate-small';
       } else {
@@ -55,7 +55,7 @@ class EventInfoCard extends React.Component {
             <img onClick={this.onModalOpen}  className="event-info-card-photo clickable-image" height="180" width="290" src={event.thumbnail_photo} alt="photo"></img>
             <br></br>
             <br></br>
-            <span onClick={this.onModalOpen}  className="clickable-header event-title">{event.name}</span>
+            <span onClick={this.onModalOpen}  className="clickable-header event-title">{event.event_title}</span>
             <br></br>
             <div className="event-card-details-container">
               <span className="low-priority-text">
@@ -70,7 +70,7 @@ class EventInfoCard extends React.Component {
               <span className={difficultyStyle}>&nbsp;{difficultyLevel}&nbsp;</span>
             </div>
             <br></br>
-            <span className="event-description">{event.description}</span>
+            <span className="event-description">{event.description_events}</span>
             <br></br>
             <br></br>
             <div className="event-card-details-container">
@@ -82,7 +82,7 @@ class EventInfoCard extends React.Component {
               </div>
               <div>
                 <span className="event-card-icon"><i style={{ 'color': 'var(--black)' }} className="fas fa-user-circle fa-2x"></i></span>
-                <span className="low-priority-text">&nbsp;Hosted by: {event.leader}</span>
+                <span className="low-priority-text">&nbsp;Host: {event.name_user}</span>
               </div>
             </div>
           </div>
@@ -97,10 +97,10 @@ class EventInfoCard extends React.Component {
             <img onClick={this.onModalOpen} className="event-info-card-photo clickable-image" height="180" width="290" src={event.thumbnail_photo} alt="photo"></img>
             <br></br>
             <br></br>
-            <span onClick={this.onModalOpen} className="event-title clickable-header">{event.name}</span>
+            <span onClick={this.onModalOpen} className="event-title clickable-header">{event.event_title}</span>
             <br></br>
             <br></br>
-            <span className="event-description">{event.description}</span>
+            <span className="event-description">{event.description_events}</span>
           </div>
           <br></br>
           {this.state.isModalOpen ? (<EventInfoModal event={event} onModalOpen={this.onModalOpen} />) : null}
