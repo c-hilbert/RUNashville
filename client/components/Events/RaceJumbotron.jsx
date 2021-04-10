@@ -43,22 +43,6 @@ class RaceJumbotron extends React.Component {
         <Carousel>
           {this.state.races.map((race) => (
             <Carousel.Item className="carousel-img gradient" key={race.id}>
-<<<<<<< HEAD
-                <img
-                style={{filter: "brightness(40%)"}}
-                  className="d-block w-100 "
-                  src={race.image_url}
-                  alt="First slide"
-                />
-                        {this.state.isModalOpen ? (<EventInfoModal event={race} onModalOpen={this.onModalOpen} />) : null}
-              <Carousel.Caption key={race.id}>
-                {/* <div className="carousel-caption"> */}
-                  <div className="carousel-text ">
-                    <div className="race-description">
-                      <div>
-                        <h1 onClick={this.onModalOpen} className="clickable-header">{race.name}</h1>
-                      </div>
-=======
               <img
                 style={{ filter: "brightness(40%)" }}
                 className="d-block w-100 "
@@ -73,7 +57,6 @@ class RaceJumbotron extends React.Component {
                     <div>
                       <h1 onClick={this.onModalOpen} className="clickable-header">{race.event_title}</h1>
                     </div>
->>>>>>> e1eba3b064639d7298c16d4fc664b02552644089
                     <div >
                       <span className="registration-text"><a href={race.link} target="blank">Click here to register!</a></span>
                     </div>
