@@ -86,7 +86,7 @@ class AddEventForm extends React.Component {
     }
 
     console.log('data:', data);
-    axios.post('/api/events', data)
+    axios.post('http://54.173.19.52:3000/api/events', data)
       .then((res) => {
         console.log('res.data:', res.data);
         console.log('submitted');
@@ -127,7 +127,7 @@ class AddEventForm extends React.Component {
     return (
       <div className="form-modal-wrapper add-event-form-modal">
         <div className="form-modal-backdrop" onClick={this.props.onModalOpen} />
-        <div className="form-modal-box">
+        <div className="form-modal-box add-event-modal-box">
           <i className="far fa-times-circle fa-2x" onClick={this.props.onModalOpen}></i>
 
           <form className="add-event-form">

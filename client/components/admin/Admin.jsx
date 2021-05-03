@@ -28,7 +28,7 @@ const Admin = class extends React.Component {
 
 
   getAllUsers() {
-    axios.get('/posts')
+    axios.get('http://54.173.19.52:3000/api/posts')
       .then(res => {
         this.setState({ allPosts: res.data });
       })
@@ -45,28 +45,32 @@ const Admin = class extends React.Component {
           <div>
             {/* <!-- intermediary wrapper --> */}
 
-              <div className="sidebar">
-                <br />
-              <i className="fas fa-running fa-3x"  onClick={this.handleUsersClick} />
-              <div className="sidebarText">Manage Users</div>
-                <i className="fas fa-exclamation-triangle fa-3x" onClick={this.handlePostsClick} />
+            <div className="sidebar">
+              <br />
+              <div className="sidebar-contents">
+                <i className="fas fa-running fa-3x sidebar-icon" onClick={this.handleUsersClick} />
+                <div className="sidebarText">Manage Users</div>
+                <i className="fas fa-exclamation-triangle fa-3x sidebar-icon" onClick={this.handlePostsClick} />
                 <div className="sidebarText">Report Posts</div>
-                <i className="fas fa-clipboard-list fa-3x" onClick={this.handleEventsClick} />
+                <i className="fas fa-clipboard-list fa-3x sidebar-icon" onClick={this.handleEventsClick} />
                 <div className="sidebarText">Manage Events</div>
                 <i className="fas fa-envelope-open-text fa-3x future" />
                 <div className="sidebarText future">Email Members</div>
               </div>
+            </div>
 
 
             <div className="not-sidebar">
-             {toRender === 'users'
-            ? <ManageUsers />
-                : toRender === 'posts'
-                ? <ManagePosts />
-                  : toRender === 'events'
-                  ? <ManageEvents />
-                  : null
-            }
+              <div>
+                {toRender === 'users' ? <ManageUsers /> : null}
+              </div>
+              <div>
+                {toRender === 'posts' ? <ManagePosts /> : null}
+              </div>
+              <div>
+                {toRender === 'events' ? <ManageEvents /> : null}
+              </div>
+
             </div>
           </div>
         </div>

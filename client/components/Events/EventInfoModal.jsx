@@ -30,7 +30,7 @@ const EventInfoModal = ({event, onModalOpen}) => {
     <div className="form-modal-wrapper">
     <div className="form-modal-backdrop" onClick={onModalOpen} />
     <div className="form-modal-box" style={{width: "1200px"}}>
-    <i className="far fa-times-circle fa-2x" onClick={onModalOpen}></i>
+    <i className="fas fa-times fa-2x modal-exit-btn" onClick={onModalOpen}></i>
       <div style={{display: "flex", flexDirection: "row", marginTop: "0px"}}>
           {/* left column */}
           <div style={{flexBasis: "50%", marginRight: "10px"}}>

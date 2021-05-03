@@ -13,13 +13,18 @@ class Homepage extends React.Component {
     super(props);
     this.state = {
       // eventData: data.events,
+      // currentUserID: 2,
+      socialFeed: feedData.posts,
+      // socialFeed: [],
       eventData: [],
-      feedData: feedData.posts,
+      // feedData: feedData.posts,
       isModalOpen: false,
       apiData: '',
+
     };
     this.fetchEvents = this.fetchEvents.bind(this);
     this.onModalOpen = this.onModalOpen.bind(this);
+    this.updateDisplayedProfile = this.updateDisplayedProfile.bind(this);
   }
 //click handlingfunctions for AddEventForm. These will get moved!
 
@@ -28,10 +33,12 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/events')
+    this.updateDisplayedProfile();
+    axios.get('http://54.173.19.52:3000/api/events')
     .then((apiData) => {
       console.log('apiData.data:', apiData.data);
       this.setState({ eventData: apiData.data });
+      const { currentUserID } = this.state;
     })
     .catch((err) => console.log(err));
     // this.fetchEvents();
@@ -42,7 +49,7 @@ class Homepage extends React.Component {
   }
 
   fetchEvents() {
-    axios.get('/api/events')
+    axios.get('http://54.173.19.52:3000/api/events')
       .then((apiData) => {
         this.setState({ eventData: apiData.data });
         console.log('apiData.data:', apiData.data);
@@ -50,8 +57,19 @@ class Homepage extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  updateDisplayedProfile() {
+    axios.get(`http://54.173.19.52:3000/api/posts/all`)
+      // axios.get(`http://54.173.19.52:3000/api/post?id=${this.state.currentUserID}`)
+      .then((newPosts) => {
+        console.log('posts: ', newPosts.data);
+        this.setState({
+          socialFeed: newPosts.data || feedData.posts,
+        });
+      })
+  }
+
   render() {
-    const { eventData, feedData } = this.state;
+    const { eventData, socialFeed } = this.state;
     // console.log('eventData:', eventData);
     return (
       <>
@@ -75,7 +93,7 @@ class Homepage extends React.Component {
           </div>
           <div className="homepage-social-feed">
             <SectionTitle text="Latest Posts" />
-            <SocialFeed posts={feedData} />
+            <SocialFeed posts={socialFeed} />
           </div>
         </div>
       </>

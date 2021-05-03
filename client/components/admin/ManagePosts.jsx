@@ -1,5 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import SocialPost from '../social/SocialPost';
 import axios from 'axios';
 
 class ManagePosts extends React.Component {
@@ -8,113 +8,99 @@ class ManagePosts extends React.Component {
 
     this.state = {
       allPosts: [],
-      updatedPosts: [],
-      hide: false
+      toggledPosts: [],
     };
     this.getAllPosts = this.getAllPosts.bind(this);
-    this.onHideClick = this.onHideClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitManagePost = this.handleSubmitManagePost.bind(this);
+
   }
 
   componentDidMount() {
     this.getAllPosts();
   }
 
+
   getAllPosts() {
-    axios.get('api/post/reported')
+    axios.get('http://54.173.19.52:3000/api/post/reported')
+    // axios.get('/api/post/reported')
       .then((res) => {
+        console.log('RES DATA ===', res.data)
         this.setState({ allPosts: res.data });
       })
       .catch((err) => console.log('ERROR GETTING POSTS: ', err));
   }
 
-  onHideClick() {
-    // this.setState((state) => {
-    //   const updatedPosts = state.updatedPosts.concat({ post_id: this.state.allPosts });
-    //   return { allPosts };
-    // });
-    // this.setState({hide: !this.state.hide})
-    this.setState(prevState => ({ hide: !prevState.hide }));
-  };
+  handleChange(event) {
+    const value = event.target.value;
+    let tempArr = this.state.toggledPosts;
 
+    if (tempArr.indexOf(value) === -1) {
+      tempArr.push(value);
+    } else {
+      tempArr.splice(tempArr.indexOf(value), 1);
+    }
+    this.setState({ toggledPosts: tempArr });
+  }
 
-  updatePosts() {
-    const body = {
-      url_short: this.state.urlShort,
-      url_link: this.state.urlLink,
-      linked_ref: this.props.linked_ref,
-      linked_ref_id: this.props.linked_ref_id,
+  handleSubmitManagePost(event) {
+    console.log('CLICKED')
+    event.preventDefault();
+    var body = {
+      "toggleHidePosts": this.state.toggledPosts
     };
-    return axios.post('/links', body)
+    return axios.put('http://54.173.19.52:3000/api/post/reported', body)
       .then(() => {
-        alert('Link has been Added!');
+        alert('Posts have been Updated!');
       })
       .then(() => {
         this.setState({
-          urlShort: '',
-          urlLink: '',
-        });
+          toggledPosts:[]
+        })
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      });
+      })
   }
 
   render() {
-    const { allPosts } = this.state;
-    console.log('ALL POSTS', allPosts);
+    const allPosts = this.state.allPosts;
+    console.log('ALL POSTS', allPosts, 'REPORTED POSTS', this.state.toggledPosts);
 
     return (
       <div>
         <div className="manage-heading">MANAGE POSTS</div>
 
-        <div className="listItems"><ul className="no-bullets">
-          {allPosts.map((post) => (
-
+        <div className="listItems">
+          <ul className="no-bullets">
+            {allPosts.map((post) => (
 
             <li key={post.id}>
-            <div class="mytextdiv">
-                <div class="mytexttitle manage-mytext">
+
+              <div className="mytextdiv">
+                <div className="mytexttitle manage-mytext">
                   {post.name_user + " " + post.last_name}&nbsp;</div>
-          <div class="divider"></div>
-          </div>
-          <div className="manage-check">
-              <label>
-                Hide?:<input
-                  name="hide"
-                  type="checkbox"
-                  checked={this.state.hide}
-                  onChange={this.onHideClick} />
-              </label>
-              </div>
+                    <div className="divider"></div>
+                </div>
+
+                <input id={post.id} type="checkbox" value={post.id} defaultChecked={post.hide_post ? "checked" : null} onChange={this.handleChange} />
+                <label htmlFor={post.id}>&nbsp;<span className="span-label">Hide Post?</span></label>
               <br></br>
-              Post Name: {post.name}
+                <strong>Post:</strong> {post.message_post}
               <br></br>
-              Created: {post.created_at}
+                <strong>Post Name: </strong>{post.name}
               <br></br>
-              Location: {post.location_post}
+                <strong>Created:</strong> {post.created_at}
               <br></br>
-              Post: {post.message_post}
+                <strong>Location: </strong>{post.location_post}
               <br></br>
               {post.image_url}
               {post.run}
             </li>
-          ))}</ul>
+            ))}
+          </ul>
+          <button onClick={this.handleSubmitManagePost}>SUBMIT CHANGES</button>
         </div>
-
-
-
-        {/* {allPosts.map((post) => (
-          <div>{post.name_user + " " + post.last_name}
-            <label>
-              Hide?:
-          <input
-                name="isGoing"
-                type="checkbox"
-                checked={this.state.hide}
-                onChange={this.onHideClick} />
-            </label>
-            <SocialPost key={post.date + post.post} propic={post.propic} name={post.name} date={post.created_at} location={post.location_post} image={post.image_url} run={post.run} post={post.message_post} /></div>
-        ))} */}
       </div>
     );
   }
