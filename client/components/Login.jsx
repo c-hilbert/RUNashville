@@ -30,7 +30,7 @@ const Login = class extends React.PureComponent {
   userLogin() {
     const { email, password } = this.state;
     const login = { email, password };
-    axios.post('/api/login', login)
+    axios.post('http://54.173.19.52:3000/api/login', login)
       .then((result) => {
         const { status } = result;
         if (status === 200) {

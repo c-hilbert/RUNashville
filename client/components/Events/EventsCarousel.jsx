@@ -23,6 +23,18 @@ class EventsCarousel extends React.Component {
   //   this.setState({ isModalOpen: !this.state.isModalOpen });
   // }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.events !== prevProps.events) {
+      this.setState({
+        events: this.props.events.slice(0, 3),
+        hiddenEventsRight: this.props.events.slice(3),
+        hiddenEventsLeft: [],
+        showNextButton: this.props.events.length > 3 ? true : false,
+        showPreviousButton: false,
+      });
+    }
+  }
+
   handleNextEventClick() {
     var updatedHiddenEventsLeft = this.state.hiddenEventsLeft;
     var updatedEvents = this.state.events;

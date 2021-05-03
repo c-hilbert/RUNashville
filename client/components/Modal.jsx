@@ -28,7 +28,7 @@ class Modal extends React.Component {
       "formName1": this.state.formName1,
       "formName2": this.state.formName2,
     };
-    return axios.post('/endpoint', body)
+    return axios.post('http://54.173.19.52:3000/api/endpoint', body)
       .then(() => {
         alert('Record has been Added!');
       })

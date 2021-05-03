@@ -30,13 +30,13 @@ const EventInfoModal = ({event, onModalOpen}) => {
     <div className="form-modal-wrapper">
     <div className="form-modal-backdrop" onClick={onModalOpen} />
     <div className="form-modal-box" style={{width: "1200px"}}>
-    <i className="far fa-times-circle fa-2x" onClick={onModalOpen}></i>
+    <i className="fas fa-times fa-2x modal-exit-btn" onClick={onModalOpen}></i>
       <div style={{display: "flex", flexDirection: "row", marginTop: "0px"}}>
           {/* left column */}
           <div style={{flexBasis: "50%", marginRight: "10px"}}>
           <div className="mytextdiv">
             <div className="mytexttitle">
-              {event.name}
+              {event.event_title}
             </div>
             <div className="divider"></div>
           </div>
@@ -47,8 +47,13 @@ const EventInfoModal = ({event, onModalOpen}) => {
             </div>
             <div className="divider"></div>
           </div> */}
-
-            <img className="thumbnail" src={event.map_url}></img>&nbsp;
+          {event.name_event_type === 'other' ? (
+            <img className="other-event-photo" src={event.map_url}></img>
+          ) : (
+            <div className="event-modal-map" dangerouslySetInnerHTML={{__html: event.map_url}}>
+            </div>
+          )}
+            {/* <img className="thumbnail" src={event.map_url}></img>&nbsp; */}
           </div>
           {/* right column */}
           <div style={{flexBasis: "50%", marginLeft: "10px", fontSize: "1.6rem", lineHeight: "3rem"}}>
@@ -88,10 +93,10 @@ const EventInfoModal = ({event, onModalOpen}) => {
 
             <div><i style={{ 'color': 'var(--black)' }} className="fas fa-user-circle"></i>&nbsp;
               Host:&nbsp;
-              <span>{event.leader}</span>
+              <span>{event.name_user}</span>
             </div>
             <div>Description:&nbsp;
-              <span> {event.description}</span>
+              <span> {event.description_events}</span>
             </div>
             {/* <div className="mytextdiv">
               <div className="mytexttitle">
