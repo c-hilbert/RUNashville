@@ -1,5 +1,5 @@
 # RUNashville
-RUNashville for community runs
+RUNashville is a place for Nashville's running community to coordinate races and share information about their personal training. 
 
 Initialize Project:
 
