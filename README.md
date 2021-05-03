@@ -3,7 +3,6 @@
 
 ![](runashville-demo.gif)
 
-test changes
 ## Technologies Used
 
   - React
